@@ -1,15 +1,18 @@
 version: 2.1
-
 orbs:
-  heroku: circleci/heroku@0.0.10 # Invoke the Heroku orb
-
+  docker: circleci/docker@1.0.0
 workflows:
-  heroku_deploy:
+  deploy:
     jobs:
-      - build
-      - heroku/deploy-via-git: # Use the pre-configured job, deploy-via-git
-          requires:
-            - build
-          filters:
-            branches:
-              only: sequential-branch-filter
+      - docker/publish:
+          image: jakousa/docker-hy
+          tag: 'latest'
+steps:
+      - checkout
+      # Bundle install dependencies
+      - run: docker build -t rails-example-project .
+      - run: docker login --email=_ --username=_ --password=$HEROKU_TOKEN registry.heroku.com
+      - run: docker tag rails-example-project registry.heroku.com/appmika2/web
+      - run: docker push registry.heroku.com/appmika2/web
+      - run: heroku container:release web -a appmika2
+      
