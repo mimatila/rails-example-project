@@ -1,7 +1,9 @@
 version: 2.1
 orbs:
-  heroku: circleci/heroku@0.0.10
+  docker: circleci/docker@1.0.0
 workflows:
-  heroku_deploy:
+  deploy:
     jobs:
-      - heroku/deploy-via-git
+      - docker/publish:
+          image: mimatila/rails-example-project
+          tag: 'latest'
