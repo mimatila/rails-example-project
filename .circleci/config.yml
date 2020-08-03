@@ -5,14 +5,5 @@ workflows:
   deploy:
     jobs:
       - docker/publish:
-          image: mimatila/rails-example-project
+          image: mimatila/docker-hy
           tag: 'latest'
-steps:
-      - checkout
-      # Bundle install dependencies
-      - run: docker build -t rails-example-project .
-      - run: docker login --email=_ --username=_ --password=$HEROKU_TOKEN registry.heroku.com
-      - run: docker tag mimatila/rails-example-project registry.heroku.com/appmika2/web
-      - run: docker push registry.heroku.com/appmika2/web
-      - run: heroku container:release web -a appmika2
-      
