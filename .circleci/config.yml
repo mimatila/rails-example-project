@@ -1,9 +1,9 @@
 version: 2.1
 orbs:
-  docker: circleci/docker@1.0.0
+  heroku: circleci/heroku@0.0.1
 workflows:
   deploy:
     jobs:
-      - docker/publish:
-          image: mimatila/rails-example-project
+      - heroku/publish:
+          image: rails-example-project
           tag: 'latest'
