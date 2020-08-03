@@ -1,9 +1,15 @@
 version: 2.1
 orbs:
-  docker: circleci/docker@1.0.0
-workflows:
-  deploy:
-    jobs:
-      - heroku/publish:
-          image: mimatila/rails-example-project
-          tag: 'latest'
+  ruby: circleci/ruby@0.1.2 
+
+jobs:
+  build:
+    docker:
+      - image: circleci/ruby:2.6.3-stretch-node
+    executor: ruby/default
+    steps:
+      - checkout
+      - run:
+          name: Which bundler?
+          command: bundle -v
+      - ruby/bundle-install
