@@ -3,15 +3,7 @@ orbs:
   docker: circleci/docker@1.0.0
 workflows:
   deploy:
-  production:
-    branch: master
     jobs:
       - docker/publish:
-          image: rails-example-project
+          image: mimatila/rails-example-project
           tag: 'latest'
-  commands:
-      - docker build -t rails-example-project .
-      - docker login --email=_ --username=_ --password=$HEROKU_TOKEN registry.heroku.com
-      - docker tag rails-example-project:latest registry.heroku.com/appmika2/web
-      - docker push registry.heroku.com/appmika2/web
-      - heroku container:release web -a appmika2
