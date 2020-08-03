@@ -8,7 +8,7 @@ dependencies:
 
 test:
   post:
-    - echo "yay - no tests"
+    - echo "yay - no tests" "6e"
 
 deployment:
   production:
