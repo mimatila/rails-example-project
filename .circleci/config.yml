@@ -18,4 +18,4 @@ deployment:
       - docker login --email=_ --username=_ --password=$HEROKU_TOKEN registry.heroku.com
       - docker tag rails-example-project:latest registry.heroku.com/appmika2/web
       - docker push registry.heroku.com/appmika2/web
-      - heroku container:release web
+      - heroku container:release web -a appmika2
