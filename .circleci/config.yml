@@ -1,16 +1,8 @@
-machine:
-  services:
-    - docker
-
-dependencies:
-  override:
-    - echo "no deps"
-
-test:
-  post:
-    - echo "yay - no tests" "6e"
-
-deployment:
+version: 2.1
+orbs:
+  docker: circleci/docker@1.0.0
+workflows:
+  deploy:
   production:
     branch: master
     commands:
@@ -19,3 +11,9 @@ deployment:
       - docker tag rails-example-project:latest registry.heroku.com/appmika2/web
       - docker push registry.heroku.com/appmika2/web
       - heroku container:release web -a appmika2
+    jobs:
+      - docker/publish:
+          image: rails-example-project
+          tag: 'latest'
+
+
