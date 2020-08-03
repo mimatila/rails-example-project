@@ -4,6 +4,6 @@ orbs:
 workflows:
   deploy:
     jobs:
-      - heroku/publish:
+      - docker/publish:
           image: mimatila/rails-example-project
           tag: 'latest'
