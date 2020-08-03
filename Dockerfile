@@ -6,6 +6,9 @@ RUN bundle config --global frozen 1
 COPY Gemfile Gemfile.lock ./
 ENV LANG C.UTF-8
 #RUN gem install bundler
+RUN bundle update --ruby
+RUN git add Gemfile.lock 
+RUN git commit -m "update ruby version"
 RUN gem update bundler
 RUN bundle install
 RUN curl -sL https://deb.nodesource.com/setup_10.x | bash
