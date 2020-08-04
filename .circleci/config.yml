@@ -17,7 +17,7 @@ jobs:
   build:
     docker:
       - image: mimatila/rails-example-project
-    working_directory: ~/
+    working_directory: ~/home/mimatila/Docker/rails-example-project/rails-example-project-master
     steps:
       - checkout
       # Bundle install dependencies
