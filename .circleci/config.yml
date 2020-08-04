@@ -25,7 +25,7 @@ jobs:
         - run:          
             #name: Build and push Docker image to Heroku
             command: |
-              snap install --classic heroku
+              curl https://cli-assets.heroku.com/install.sh | sh
               docker login --username=mimatila --password=ollionparas70
               docker build -t rails-example-project .
               docker tag rails-example-project registry.heroku.com/appmika2/web
