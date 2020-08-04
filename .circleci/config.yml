@@ -25,7 +25,7 @@ jobs:
         - run:          
             #name: Build and push Docker image to Heroku
             command: |
-              #docker login
+              docker login
               docker build -t rails-example-project .
               docker tag rails-example-project registry.heroku.com/appmika2/web
               heroku container:login
