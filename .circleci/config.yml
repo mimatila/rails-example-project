@@ -18,10 +18,11 @@ jobs:
     docker:
       - image: mimatila/rails-example-project
     working_directory: ~/pipelines/github/mimatila
-    machine: true
+    
     steps:
+        - setup_remote_docker
         - checkout
-        - run:
+        - run:          
             name: Build and push Docker image to Heroku
             command: |
               docker login
