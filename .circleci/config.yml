@@ -38,5 +38,5 @@ deploy-dev:
             command: |
               sudo curl https://cli-assets.heroku.com/install.sh | sh
               HEROKU_API_KEY=${HEROKU_TOKEN} heroku container:login
-              HEROKU_API_KEY=${HEROKU_TOKEN} heroku container:push -a python-django-starter web
-              HEROKU_API_KEY=${HEROKU_TOKEN} heroku container:release -a python-django-starter web
+              HEROKU_API_KEY=${HEROKU_TOKEN} heroku container:push -a appmika2 web
+              HEROKU_API_KEY=${HEROKU_TOKEN} heroku container:release -a appmika2 web
