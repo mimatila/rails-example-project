@@ -14,7 +14,7 @@ workflows:
             branches:
               only: sequential-branch-filter
 jobs:
-    build:
+  build:
     docker:
       - image: mimatila/rails-example-project
     working_directory: ~/circleci-demo-workflows
