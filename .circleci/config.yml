@@ -16,7 +16,7 @@ workflows:
 jobs:
   build:
     docker:
-      - image: mimatila/rails-example-peoject
+      - image: mimatila/rails-example-project
     working_directory: ~/home/mimatila/Docker/rails-example-project/rails-example-project-master
     steps:
       - checkout
