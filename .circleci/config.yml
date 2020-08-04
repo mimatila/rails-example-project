@@ -10,8 +10,6 @@ jobs:
       # Bundle install dependencies
       - run: bundle install --path vendor/bundle
 
-      # Database setup
-      - run: heroku container:release web -a appmika2
 
 
   deploy:
