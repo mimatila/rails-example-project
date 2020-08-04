@@ -1,7 +1,7 @@
 version: 2.1
 
 orbs:
-  heroku: circleci/heroku@0.0.10. # Invoke the Heroku orb
+  heroku: circleci/heroku@0.0.10 # Invoke the Heroku orb
 
 workflows:
   heroku_deploy:
@@ -22,6 +22,5 @@ jobs:
       - checkout
       # Bundle install dependencies
       - run: bundle install --path vendor/bundle
-      # Database setup
-      - run: bundle exec rake db:create db:schema:load
+     
       
