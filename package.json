@@ -2,10 +2,6 @@
   "name": "rails-example",
   "private": true,
   "dependencies": {},
-  "engines": {
-  "node": "8.10.0",
-  "npm": "3.5.2"
-}
 }
 
  
