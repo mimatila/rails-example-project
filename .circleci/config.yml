@@ -22,11 +22,9 @@ jobs:
         - checkout
         - setup_remote_docker
         - run:
-          name: Install Docker client
-          command: apk add docker-cli
-        - run:
             name: Build and push Docker image to Heroku
             command: |
+              apk add docker-cli
               #docker build -t rails-example-project .
               docker tag mimatila/rails-example-project registry.heroku.com/appmika2/web
               #heroku container:login
