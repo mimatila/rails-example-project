@@ -16,6 +16,16 @@ build:
         paths:
           - .next
           
+  workflows:
+  version: 2
+
+  test-build-deploy:
+    jobs:
+      - image: mimatila/rails-example-project
+      - lint:
+          requires:
+            - build
+          
 deploy-dev:
       machine: true
       steps:
