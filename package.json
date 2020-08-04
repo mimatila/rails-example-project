@@ -1,5 +1,8 @@
 {
   "name": "rails-example",
   "private": true,
-  "dependencies": {}
+  "dependencies": {},
+  "scripts": {
+   "start": "node index.js"
 }
+
