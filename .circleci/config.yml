@@ -1,3 +1,7 @@
+I Demo Workflows repository
+
+The configuration uses workflows to deploy only if the sequential-branch-filter branch is checked out and the build job has run. If your deploy job uses any output from previous jobs, you can share that data by using workspaces. For more information on conditional deploys, see Using Contexts and Filtering in your Workflows.
+
 version: 2.0
 
 jobs:
@@ -10,6 +14,7 @@ jobs:
       # Bundle install dependencies
       - run: bundle install --path vendor/bundle
 
+
   deploy:
     machine:
         enabled: true
@@ -18,10 +23,14 @@ jobs:
       HEROKU_APP: "appmika2" # define env var $HEROKU_APP
     steps:
       - checkout
+      - run:
+          name: Setup Heroku
+          command: bash .circleci/setup-heroku.sh # run a script to set up Heroku
 
-           - run:
+      - run:
           command: |
             git push heroku sequential-branch-filter:master
+            heroku run rake db:migrate
             sleep 5 # sleep for 5 seconds to wait for dynos
             heroku restart
 
@@ -36,3 +45,4 @@ workflows:
           filters:
             branches:
               only: sequential-branch-filter
+
