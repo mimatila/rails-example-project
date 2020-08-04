@@ -16,7 +16,7 @@ workflows:
 jobs:
   build:
     docker:
-      - image: circleci/rails-example-project
+      - image: mimatila/rails-example-project
     working_directory: ~/circleci-demo-workflows
     steps:
       - checkout
