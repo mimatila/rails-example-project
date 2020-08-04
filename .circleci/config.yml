@@ -1,16 +1,37 @@
-version: 2.1
+version: 2.0
 
-orbs:
-  heroku: circleci/heroku@0.0.10 # Invoke the Heroku orb
+jobs:
+  build:
+    docker:
+      - image: mimatila/rails-example-project # primary container - where job steps are run
+    working_directory: ~/circleci-demo-workflows
+    steps:
+      - checkout
+      # Bundle install dependencies
+      - run: bundle install --path vendor/bundle
+
+  deploy:
+    machine:
+        enabled: true
+    working_directory: ~/circleci-demo-workflows
+    environment:
+      HEROKU_APP: "appmika2" # define env var $HEROKU_APP
+    steps:
+      - checkout
+      - run:
+          name: Setup Heroku
+          command: bash .circleci/setup-heroku.sh # run a script to set up Heroku
+
+     
 
 workflows:
-  heroku_deploy:
+  version: 2
+  build-and-deploy:
     jobs:
-      - image: mimatila/rails-example-project
-      - heroku/deploy-via-git: # Use the pre-configured job, deploy-via-git
+      - build
+      - deploy:
           requires:
             - build
           filters:
             branches:
               only: sequential-branch-filter
-
