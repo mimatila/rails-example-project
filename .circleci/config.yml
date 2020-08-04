@@ -1,7 +1,3 @@
-I Demo Workflows repository
-
-The configuration uses workflows to deploy only if the sequential-branch-filter branch is checked out and the build job has run. If your deploy job uses any output from previous jobs, you can share that data by using workspaces. For more information on conditional deploys, see Using Contexts and Filtering in your Workflows.
-
 version: 2.0
 
 jobs:
