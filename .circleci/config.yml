@@ -21,6 +21,7 @@ jobs:
     steps:
       - checkout
       # Bundle install dependencies
+      - run: bundle lock --add-platform x86-mingw32 x86-mswin32 x64-mingw32 java
       - run: bundle install --path vendor/bundle
       # Database setup
       #- run: bundle exec rake db:create db:schema:load
