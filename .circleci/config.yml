@@ -5,4 +5,4 @@ workflows:
   heroku_deploy:
     jobs:
       docker:
-      - image: circleci/ruby:2.4-node
+      - image: mimatila/rails-example-project
