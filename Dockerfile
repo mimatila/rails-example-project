@@ -1,6 +1,6 @@
 FROM ruby:2.6
 WORKDIR /usr/src/myapp
-#EXPOSE 3000
+EXPOSE 3000
 COPY . /usr/src/myapp
 RUN bundle config --global frozen 1
 COPY Gemfile Gemfile.lock ./
