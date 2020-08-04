@@ -13,4 +13,3 @@ RUN apt install -y nodejs
 RUN npm install
 RUN bin/rails db:migrate
 CMD rails s
-
