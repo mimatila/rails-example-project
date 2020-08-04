@@ -15,15 +15,20 @@ workflows:
               only: sequential-branch-filter
 jobs:
   build:
-    docker:
-      - image: mimatila/rails-example-project
+    #docker:
+    #  - image: mimatila/rails-example-project
     working_directory: ~/home/mimatila/Docker/rails-example-project/rails-example-project-master
     steps:
         - checkout
         - run:
             name: Build and push Docker image to Heroku
             command: |
-              curl https://cli-assets.heroku.com/install.sh | sh
+              docker build -t rails-example-project .
+              docker tag rails-example-project registry.heroku.com/appmika2/web
+              heroku container:login
+              docker push registry.heroku.com/appmika2/web
+              heroku container:release web -a appmika2
+              #curl https://cli-assets.heroku.com/install.sh | sh
               #HEROKU_API_KEY=${HEROKU_TOKEN} heroku container:login
               #HEROKU_API_KEY=${HEROKU_TOKEN} heroku container:push -a appmika2 web
               #HEROKU_API_KEY=${HEROKU_TOKEN} heroku container:release -a appmika2 web
