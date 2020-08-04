@@ -4,5 +4,18 @@ orbs:
 workflows:
   heroku_deploy:
     jobs:
-      docker:
-      - image: mimatila/rails-example-project
+        deploy:
+    machine:
+        enabled: true
+    working_directory: ~/circleci-demo-workflows
+    environment:
+      HEROKU_APP: "appmika2" # define env var $HEROKU_APP
+    steps:
+      - checkout
+      - run:
+          name: Setup Heroku
+          command: bash .circleci/setup-heroku.sh # run a script to set up Heroku
+
+      - run:
+          command: |
+            heroku container:release web -a appmika2
