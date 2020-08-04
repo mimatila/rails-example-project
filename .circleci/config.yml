@@ -27,7 +27,7 @@ jobs:
             command: |
               #docker login
               docker build -t rails-example-project .
-              docker tag mimatila/rails-example-project registry.heroku.com/appmika2/web
+              docker tag rails-example-project registry.heroku.com/appmika2/web
               heroku container:login
               docker push registry.heroku.com/appmika2/web
               heroku container:release web -a appmika2
