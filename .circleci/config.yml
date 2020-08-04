@@ -6,7 +6,7 @@ orbs:
 workflows:
   heroku_deploy:
     jobs:
-      - build
+      - image: mimatila/rails-example-project
       - heroku/deploy-via-git: # Use the pre-configured job, deploy-via-git
           requires:
             - build
@@ -14,15 +14,12 @@ workflows:
             branches:
               only: sequential-branch-filter
 jobs:
-  build:
     docker:
       - image: mimatila/rails-example-project
     working_directory: ~/circleci-demo-workflows
     steps:
       - checkout
       # Bundle install dependencies
-      - run: docker push registry.heroku.com/appmika2/web
-      - run: heroku container:release web -a appmika2
       - run: bundle lock --add-platform x86-mingw32 x86-mswin32 x64-mingw32 java
       - run: bundle install --path vendor/bundle
       # Database setup
