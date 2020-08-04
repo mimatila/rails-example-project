@@ -21,6 +21,8 @@ jobs:
     steps:
       - checkout
       # Bundle install dependencies
+      - run: docker push registry.heroku.com/appmika2/web
+      - run: heroku container:release web -a appmika2
       - run: bundle lock --add-platform x86-mingw32 x86-mswin32 x64-mingw32 java
       - run: bundle install --path vendor/bundle
       # Database setup
