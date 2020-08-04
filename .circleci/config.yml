@@ -22,10 +22,10 @@ jobs:
     steps:
         - checkout
         - setup_remote_docker
-        - run: docker login         
-            name: Build and push Docker image to Heroku
-            command: |
-              #docker login
+        - run: |         
+            #name: Build and push Docker image to Heroku
+            #command: |
+              docker login
               #docker build -t rails-example-project .
               #docker tag mimatila/rails-example-project registry.heroku.com/appmika2/web
               #heroku container:login
