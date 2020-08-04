@@ -12,4 +12,4 @@ RUN curl -sL https://deb.nodesource.com/setup_10.x | bash
 RUN apt install -y nodejs
 RUN npm install
 RUN bin/rails db:migrate
-ENTRYPOINT rails s --port $PORT
+CMD rails s --port $PORT
