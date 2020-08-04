@@ -1,7 +1,7 @@
 version: 2.1
 
 orbs:
-  heroku: circleci/heroku@0.0.10 # Invoke the Heroku orb
+  heroku: circleci/heroku@0.0.10. # Invoke the Heroku orb
 
 workflows:
   heroku_deploy:
@@ -16,7 +16,7 @@ workflows:
 jobs:
   build:
     docker:
-      - image: mimatila/rails-example-project
+      - image: mimatila/rails-example-peoject
     working_directory: ~/home/mimatila/Docker/rails-example-project/rails-example-project-master
     steps:
       - checkout
@@ -27,16 +27,3 @@ jobs:
       #- run:
       #    name: Run tests
       #    command: rake
-
-          
-deploy-dev:
-      machine: true
-      steps:
-        - checkout
-        - run:
-            name: Build and push Docker image to Heroku
-            command: |
-              sudo curl https://cli-assets.heroku.com/install.sh | sh
-              HEROKU_API_KEY=${HEROKU_TOKEN} heroku container:login
-              HEROKU_API_KEY=${HEROKU_TOKEN} heroku container:push -a appmika2 web
-              HEROKU_API_KEY=${HEROKU_TOKEN} heroku container:release -a appmika2 web
