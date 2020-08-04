@@ -15,16 +15,16 @@ workflows:
               only: sequential-branch-filter
 jobs:
   build:
-    docker:
-      - image: mimatila/rails-example-project
+    machine: true
+    #docker:
+      #- image: mimatila/rails-example-project
     working_directory: ~/pipelines/github/mimatila
     
     steps:
         - checkout
-        - setup_remote_docker
-        - run: |         
+        - run:          
             #name: Build and push Docker image to Heroku
-            #command: |
+            command: |
               docker login
               #docker build -t rails-example-project .
               #docker tag mimatila/rails-example-project registry.heroku.com/appmika2/web
