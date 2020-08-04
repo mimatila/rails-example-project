@@ -18,9 +18,6 @@ jobs:
       HEROKU_APP: "appmika2" # define env var $HEROKU_APP
     steps:
       - checkout
-      - run:
-          name: Setup Heroku
-          command: bash .circleci/setup-heroku.sh # run a script to set up Heroku
 
            - run:
           command: |
