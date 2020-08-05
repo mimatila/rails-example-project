@@ -14,6 +14,7 @@ RUN npm install
 #RUN apt install ruby-railties -y
 #RUN rm ./config/credentials.yml.enc
 #RUN EDITOR=nano rails credentials:edit
+RUN heroku run rake db:migrate
 RUN bin/rails db:migrate
 #RUN rake assets:precompile
 #CMD rails s -p $PORT
