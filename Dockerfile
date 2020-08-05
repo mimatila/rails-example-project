@@ -12,7 +12,10 @@ RUN curl -sL https://deb.nodesource.com/setup_10.x | bash
 RUN apt install -y nodejs
 RUN npm install
 #RUN apt install ruby-railties -y
-RUN rails db:migrate
+RUN rm ./config/credentials.yml.enc
+RUN EDITOR=nano rails credentials:edit
+RUN bin/rails db:migrate
+RUN rake assets:precompile
 #CMD rails s -p $PORT
 #CMD rails s -e production --port $PORT
-CMD ["rails", "s", "-e", "production", "--port", "$PORT"]
+CMD ["rails", "s", "-e", "production"]
