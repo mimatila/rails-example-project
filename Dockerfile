@@ -14,4 +14,5 @@ RUN npm install
 #RUN apt install ruby-railties -y
 RUN bin/rails db:migrate
 #CMD rails s -p $PORT
-CMD rails s -e production --port $PORT
+#CMD rails s -e production --port $PORT
+CMD ["rails", "s", "-e", "production", "--port", "$PORT"]
