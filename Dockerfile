@@ -1,5 +1,6 @@
 FROM ruby:2.6
-RUN bundle installRUN curl -sL https://deb.nodesource.com/setup_10.x | bash
+RUN curl -sL https://deb.nodesource.com/setup_10.x | bash
+RUN bundle install
 RUN apt install -y nodejs
 WORKDIR /usr/src/myapp
 COPY . /usr/src/myapp
