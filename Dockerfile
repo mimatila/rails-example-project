@@ -1,7 +1,7 @@
 FROM ruby:2.6
-WORKDIR /usr/src/myapp
+WORKDIR /usr/src/app
 EXPOSE 3000
-COPY . /usr/src/myapp
+COPY . /usr/src/app
 RUN bundle config --global frozen 1
 COPY Gemfile Gemfile.lock ./
 ENV LANG C.UTF-8
