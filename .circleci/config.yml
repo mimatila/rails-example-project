@@ -1,35 +1,11 @@
 version: 2.1
-
 orbs:
-  heroku: circleci/heroku@0.0.10 # Invoke the Heroku orb
-
+  docker: circleci/docker@1.0.0
 workflows:
-  heroku_deploy:
+  deploy:
     jobs:
-      - build
-      - heroku/deploy-via-git: # Use the pre-configured job, deploy-via-git
-          requires:
-            - build
-          filters:
-            branches:
-              only: sequential-branch-filter
-jobs:
-  build:
-    machine: true
-    #docker:
-      #- image: mimatila/rails-example-project
-    #working_directory: ~/pipelines/github/mimatila
-    
-    steps:
-        - checkout
-        - run:          
-            #name: Build and push Docker image to Heroku
-            command: |
-              curl https://cli-assets.heroku.com/install.sh | sh
-              docker login --username=mimatila --password=ollionparas70
-              docker build -t rails-example-project .
-              docker tag rails-example-project registry.heroku.com/appmika2/web
-              heroku container:login
-              docker push registry.heroku.com/appmika2/web
-              heroku container:release web -a appmika2
+      - docker/publish:
+          image: mimatila/docker-mika-3.3
+          tag: 'latest'
+
  
